@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+    <style>
+      .pace .pace-progress {
+      background: #1E92FB; /*进度条颜色*/
+      height: 3px;
+      }
+      .pace .pace-progress-inner {
+      box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+      }
+      .pace .pace-activity {
+      border-top-color: #1E92FB;    /*上边框颜色*/
+      border-left-color: #1E92FB;    /*左边框颜色*/
+      }
+    </style>
+    <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fli32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/li16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="c++ —多线程学习(持续更新中…)摘要：c++多线程学习!此文主要包括：    1.线程的三种启动方式    2.使用detach()时注意事项    3.创建和等待多个线程    4.互斥量与死锁问题及其解决方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++ ---多线程学习">
+<meta property="og:url" content="http://yoursite.com/2020/02/15/cppmultithreading/index.html">
+<meta property="og:site_name" content="Mr&#39;Li&#39;s blog">
+<meta property="og:description" content="c++ —多线程学习(持续更新中…)摘要：c++多线程学习!此文主要包括：    1.线程的三种启动方式    2.使用detach()时注意事项    3.创建和等待多个线程    4.互斥量与死锁问题及其解决方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-15T15:16:32.000Z">
+<meta property="article:modified_time" content="2020-02-21T13:40:01.508Z">
+<meta property="article:author" content="Li Zongyu">
+<meta property="article:tag" content="多线程">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/15/cppmultithreading/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>c++ ---多线程学习 | Mr'Li's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Mr'Li's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr'Li's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/15/cppmultithreading/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Li Zongyu">
+      <meta itemprop="description" content="I'm a pretty boy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr'Li's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          c++ ---多线程学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-15 23:16:32" itemprop="dateCreated datePublished" datetime="2020-02-15T23:16:32+08:00">2020-02-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-21 21:40:01" itemprop="dateModified" datetime="2020-02-21T21:40:01+08:00">2020-02-21</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="热度" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">热度：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.6k</span>
+            </span>
+
+
+          
+        </div>
+      </header>
+
+
+         
+
+
+    
+    
+    
+
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="c-—多线程学习-持续更新中…"><a href="#c-—多线程学习-持续更新中…" class="headerlink" title="c++ —多线程学习(持续更新中…)"></a>c++ —多线程学习(持续更新中…)</h1><h2 id="摘要："><a href="#摘要：" class="headerlink" title="摘要："></a>摘要：</h2><p>c++多线程学习!<br>此文主要包括：<br>    1.线程的三种启动方式<br>    2.使用detach()时注意事项<br>    3.创建和等待多个线程<br>    4.互斥量与死锁问题及其解决方法</p>
+<a id="more"></a>
+<h2 id="0-声明"><a href="#0-声明" class="headerlink" title="0.声明"></a>0.声明</h2><p>我只是知识的搬运工，谢谢！</p>
+<h2 id="1-线程的三种启动方式"><a href="#1-线程的三种启动方式" class="headerlink" title="1.线程的三种启动方式"></a>1.线程的三种启动方式</h2><p>（当然前提是要引用<thread>头文件）</p>
+<h3 id="（1）普通函数启动"><a href="#（1）普通函数启动" class="headerlink" title="（1）普通函数启动"></a>（1）普通函数启动</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;	</span><br><span class="line">	<span class="comment">//...一些操作;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//这里的function是自己定义的一个函数；这里的参数是function的传参。</span></span><br><span class="line">	<span class="function">thread <span class="title">myobj</span><span class="params">(function, 参数)</span></span>;</span><br><span class="line">	myobj.join();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="（2）类中成员函数做线程启动函数"><a href="#（2）类中成员函数做线程启动函数" class="headerlink" title="（2）类中成员函数做线程启动函数"></a>（2）类中成员函数做线程启动函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span> </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myprint</span><span class="params">()</span></span>&#123;		<span class="comment">//成员函数</span></span><br><span class="line">     <span class="comment">//...一些操作</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">     A a;</span><br><span class="line">     <span class="function"><span class="built_in">std</span>::thread <span class="title">myobj</span><span class="params">(&amp;A::myprint, &amp;a , 参数)</span></span>;</span><br><span class="line">     myobj.join();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="（3）lammda表达式"><a href="#（3）lammda表达式" class="headerlink" title="（3）lammda表达式"></a>（3）lammda表达式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> lamthread = []&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"..."</span> &lt;&lt; <span class="built_in">endl</span>;....&#125;</span><br><span class="line"><span class="function">thread <span class="title">a</span><span class="params">(lamthread)</span></span>;</span><br><span class="line">a.join();</span><br></pre></td></tr></table></figure>
+<h2 id="2-使用detach-时注意事项"><a href="#2-使用detach-时注意事项" class="headerlink" title="2.使用detach()时注意事项"></a>2.使用detach()时注意事项</h2><p>.<em>detach()*与</em>.join()<em>区别在于后者是主线程等待子线程结束之后在结束，而前者</em>.detach()*则不同，此时主线程不会等待子线程结束。<br>在传递类对象时，避免隐式转换，要在main函数中提前显示转换，然后在函数参数里，用引用来接，否则系统还会多构造一次对象。<br>若传递int 这种简单型参数，建议都是值传递，不要用引用。</p>
+<h2 id="3-创建和等待多个线程"><a href="#3-创建和等待多个线程" class="headerlink" title="3.创建和等待多个线程"></a>3.创建和等待多个线程</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myprint</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;<span class="comment">//...&#125;//线程函数公共入口</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">vector</span> &lt;thread&gt; mythreads;<span class="comment">//线程型容器</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">10</span>; ++i)&#123;</span><br><span class="line">	      mythreads.push_back(thread(myprint , i));</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> iter = mythread.begin(); iter &lt; mythread.end(); ++iter)&#123;</span><br><span class="line">	      iter-&gt;join();<span class="comment">//主线程等待所有子线程结束之后运行结束</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"主线程完毕"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-互斥量与死锁问题及其解决方法"><a href="#4-互斥量与死锁问题及其解决方法" class="headerlink" title="4.互斥量与死锁问题及其解决方法"></a>4.互斥量与死锁问题及其解决方法</h2><h3 id="（1）互斥量"><a href="#（1）互斥量" class="headerlink" title="（1）互斥量"></a>（1）互斥量</h3><p>当同时有多个线程共享数据时，必须考虑互斥量问题。<br>互斥量即“锁头”。<br>当一个线程访问并操作共享数据时必须先保护线程中操作共享数据的代码（即上锁），其他线程等待此线程操作完后（即开锁后），才能对共享数据做相应的操作。<br>这里通过引用头文件#include <mutex>中的lock()和unlock()方法进行所谓的开解锁操作。<br>(注意：lock(),unlock()必须成对出现)<br><strong>举例代码</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">list</span> &lt;<span class="keyword">int</span>&gt; date;</span><br><span class="line">    mutex my_mutex;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">in</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">	my_mutex.lock();</span><br><span class="line">	date.push_back(i);</span><br><span class="line">	my_mutex.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">out</span> <span class="params">(<span class="keyword">int</span> command)</span></span>&#123;</span><br><span class="line">	     my_mutex.lock();</span><br><span class="line">	     <span class="keyword">if</span>(!date.empty())</span><br><span class="line">	     &#123;</span><br><span class="line">		      command = date.front();</span><br><span class="line">		      date.pop_front();<span class="comment">//移除首个数据</span></span><br><span class="line">		      my_mutex.unlock();</span><br><span class="line">		      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">	     my_mutex.unlock();</span><br><span class="line">	     <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）死锁问题及其解决方法"><a href="#（2）死锁问题及其解决方法" class="headerlink" title="（2）死锁问题及其解决方法"></a>（2）死锁问题及其解决方法</h3><p>死锁问题造成的原因：<br>多个线程同时被阻塞,它们中的一个或者全部都在等待某个资源被释放,而该资源又被其他线程锁定,从而导致每一个线程都得等其它线程释放其锁定的资源,造成了所有线程都无法正常结束。<br>死锁问题必须是两个及两个以上互斥量（锁）,两个及两个以上的线程。<br>举例说明：<br>现有两把锁：my_mutex1，my_mutex2<br>第一种方案：两把锁上锁顺序一致，即第一条线程中my_mutex1.lock();和my_mutex2.lock();是什们前后位置，在别的线程中就应该是什么顺序。代码简写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;mutex&gt;</span></span></span><br><span class="line">&#123;</span><br><span class="line">	mutex my_mutex1;<span class="comment">//声明互斥量1（即锁）</span></span><br><span class="line">	mutex my_mutex2;<span class="comment">//声明互斥量2（即锁）</span></span><br><span class="line">    一个线程中：</span><br><span class="line">	my_mutex1.lock();</span><br><span class="line">	<span class="comment">//一些操作</span></span><br><span class="line">	my_mutex2.lock();</span><br><span class="line">	<span class="comment">//要保护的代码操作块</span></span><br><span class="line">	my_mutex1.unlock();</span><br><span class="line">	my_mutex2.unlock();</span><br><span class="line">    另一线程中：</span><br><span class="line">	my_mutex1.lock();</span><br><span class="line">	<span class="comment">//一些操作</span></span><br><span class="line">	my_mutex2.lock();</span><br><span class="line">	<span class="comment">//要保护的代码操作块</span></span><br><span class="line">	my_mutex1.unlock();</span><br><span class="line">	my_mutex2.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二种方案：运用lock_guard类模板。<br>lock_guard类模板原理在于，它将lock()写入构造函数，将unlock()写入析构函数中。<br>std::lock_guard<a href="std::mutex">std::mutex</a> a(my_mutex);<br>代码简写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;mutex&gt;</span></span></span><br><span class="line">&#123;</span><br><span class="line">	mutex my_mutex1;<span class="comment">//声明互斥量1（即锁）</span></span><br><span class="line">	mutex my_mutex2;<span class="comment">//声明互斥量2（即锁）</span></span><br><span class="line">     一个线程中：</span><br><span class="line">	<span class="function"><span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">a1</span><span class="params">(my_mutex1)</span></span>;</span><br><span class="line">	<span class="function"><span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">a2</span><span class="params">(my_mutex2)</span></span>;</span><br><span class="line">	<span class="comment">//要保护的代码操作块</span></span><br><span class="line">    另一线程中：</span><br><span class="line">	<span class="function"><span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">a1</span><span class="params">(my_mutex1)</span></span>;</span><br><span class="line">	<span class="function"><span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">a2</span><span class="params">(my_mutex2)</span></span>;</span><br><span class="line">	<span class="comment">//要保护的代码操作块	</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第三种方案：运用std::lock()函数模板,和std::lockguard类模板<br>(std::lock()函数模板把不经常用，一般两个互斥量之间应该有一些操作，建议一个一个锁)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;mutex&gt;</span></span></span><br><span class="line">&#123;	</span><br><span class="line">	mutex my_mutex1;<span class="comment">//声明互斥量1（即锁）</span></span><br><span class="line">	mutex my_mutex2;<span class="comment">//声明互斥量2（即锁）</span></span><br><span class="line">     一个线程中：</span><br><span class="line">	<span class="built_in">std</span>::lock(my_mutex1,my_mutex2);</span><br><span class="line">	<span class="function"><span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">a1</span><span class="params">(my_mutex1,<span class="built_in">std</span>::adopt_lock)</span></span>;</span><br><span class="line">	<span class="comment">//std::adopt_lock是一个结构体对象，起标记作用。</span></span><br><span class="line"><span class="comment">//作用就是这个互斥量已经lock()过了就不需要在std::lock_guard&lt;std::mutex&gt;里面对对//象进行再次的lock()了。</span></span><br><span class="line">	<span class="function"><span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">a2</span><span class="params">(my_mutex2,<span class="built_in">std</span>::adopt_lock)</span></span>;</span><br><span class="line">	<span class="comment">//要保护的代码操作块</span></span><br><span class="line">    另一线程中：</span><br><span class="line">	<span class="built_in">std</span>::lock(my_mutex1,my_mutex2);</span><br><span class="line">	<span class="function"><span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">a1</span><span class="params">(my_mutex1,<span class="built_in">std</span>::adopt_lock)</span></span>;</span><br><span class="line">	<span class="function"><span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; <span class="title">a2</span><span class="params">(my_mutex2,<span class="built_in">std</span>::adopt_lock)</span></span>;</span><br><span class="line">	<span class="comment">//要保护的代码操作块</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-自学过程中杂碎cpp知识"><a href="#5-自学过程中杂碎cpp知识" class="headerlink" title="5.自学过程中杂碎cpp知识"></a>5.自学过程中杂碎cpp知识</h2><p>(1)list:对频繁地按顺序插入和删除数据是效率高；vector:对随机的插入和删除数据的效率高<br>(2)使用std::ref()时，说明我们告诉控制台必须要用原来没有拷贝的初始值来做传递，并且此时函数中的参数前不在加const。（声明线程时，括号中&amp;myobj == std::ref(myobj)，即第二个参数是引用，才能保证线程里用的是同一对象）<br>(3)传递智能指针时，用std::move()(把智能指针移到参数中，原先的智能指针指向为空，所以，main中只能用join不能用detach）</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>请我吃糖！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Li Zongyu 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Li Zongyu 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Li Zongyu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/02/15/cppmultithreading/" title="c++ ---多线程学习">http://yoursite.com/2020/02/15/cppmultithreading/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/wechat.png">
+                <span class="icon">
+                  <i class="fa fa-wechat"></i>
+                </span>
+
+                <span class="label">WeChat</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/images/qq.jpg">
+                <span class="icon">
+                  <i class="fa fa-qq"></i>
+                </span>
+
+                <span class="label">QQ</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i># 多线程</a>
+              <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i># c++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/15/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-%E7%9C%BC%E7%90%83%E8%B7%9F%E8%B8%AA%E6%95%88%E6%9E%9C/" rel="prev" title="前端学习------眼球跟踪效果">
+      <i class="fa fa-chevron-left"></i> 前端学习------眼球跟踪效果
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c-—多线程学习-持续更新中…"><span class="nav-number">1.</span> <span class="nav-text">c++ —多线程学习(持续更新中…)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要："><span class="nav-number">1.1.</span> <span class="nav-text">摘要：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-声明"><span class="nav-number">1.2.</span> <span class="nav-text">0.声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-线程的三种启动方式"><span class="nav-number">1.3.</span> <span class="nav-text">1.线程的三种启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）普通函数启动"><span class="nav-number">1.3.1.</span> <span class="nav-text">（1）普通函数启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）类中成员函数做线程启动函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">（2）类中成员函数做线程启动函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）lammda表达式"><span class="nav-number">1.3.3.</span> <span class="nav-text">（3）lammda表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用detach-时注意事项"><span class="nav-number">1.4.</span> <span class="nav-text">2.使用detach()时注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建和等待多个线程"><span class="nav-number">1.5.</span> <span class="nav-text">3.创建和等待多个线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-互斥量与死锁问题及其解决方法"><span class="nav-number">1.6.</span> <span class="nav-text">4.互斥量与死锁问题及其解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）互斥量"><span class="nav-number">1.6.1.</span> <span class="nav-text">（1）互斥量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）死锁问题及其解决方法"><span class="nav-number">1.6.2.</span> <span class="nav-text">（2）死锁问题及其解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-自学过程中杂碎cpp知识"><span class="nav-number">1.7.</span> <span class="nav-text">5.自学过程中杂碎cpp知识</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Zongyu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Li Zongyu</p>
+  <div class="site-description" itemprop="description">I'm a pretty boy</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lizongyu1293306035" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lizongyu1293306035" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1293306035@qq.com" title="E-Mail → mailto:1293306035@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1293306035" title="QQ → 1293306035"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李宗雨</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+	<span title="post.totalcount">
+     1.8k字 </span>
+    <!--<span title="站点总字数">5k</span>-->
+  
+
+  
+ 
+
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='200' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":250,"height":500},"mobile":{"show":false},"log":false});</script></body>
+</html>
