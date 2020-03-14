@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://lizongyu1293306035.github.io/"/>
   <updated>2020-03-13T09:26:52.229Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://lizongyu1293306035.github.io/</id>
   
   <author>
     <name>Li Zongyu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>计算多个数的最小公倍数</title>
-    <link href="http://yoursite.com/2020/03/13/%E8%AE%A1%E7%AE%97%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/"/>
-    <id>http://yoursite.com/2020/03/13/%E8%AE%A1%E7%AE%97%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/</id>
+    <link href="http://lizongyu1293306035.github.io/2020/03/13/%E8%AE%A1%E7%AE%97%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/"/>
+    <id>http://lizongyu1293306035.github.io/2020/03/13/%E8%AE%A1%E7%AE%97%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0/</id>
     <published>2020-03-13T09:26:00.000Z</published>
     <updated>2020-03-13T09:26:52.229Z</updated>
     
@@ -33,16 +33,16 @@
     
     
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://lizongyu1293306035.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://lizongyu1293306035.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>c++ ---多线程学习</title>
-    <link href="http://yoursite.com/2020/02/15/cppmultithreading/"/>
-    <id>http://yoursite.com/2020/02/15/cppmultithreading/</id>
+    <link href="http://lizongyu1293306035.github.io/2020/02/15/cppmultithreading/"/>
+    <id>http://lizongyu1293306035.github.io/2020/02/15/cppmultithreading/</id>
     <published>2020-02-15T15:16:32.000Z</published>
     <updated>2020-02-21T13:40:01.508Z</updated>
     
@@ -56,16 +56,16 @@
     
     
     
-      <category term="多线程" scheme="http://yoursite.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+      <category term="多线程" scheme="http://lizongyu1293306035.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+      <category term="c++" scheme="http://lizongyu1293306035.github.io/tags/c/"/>
     
   </entry>
   
   <entry>
     <title>前端学习------眼球跟踪效果</title>
-    <link href="http://yoursite.com/2020/02/15/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-%E7%9C%BC%E7%90%83%E8%B7%9F%E8%B8%AA%E6%95%88%E6%9E%9C/"/>
-    <id>http://yoursite.com/2020/02/15/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-%E7%9C%BC%E7%90%83%E8%B7%9F%E8%B8%AA%E6%95%88%E6%9E%9C/</id>
+    <link href="http://lizongyu1293306035.github.io/2020/02/15/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-%E7%9C%BC%E7%90%83%E8%B7%9F%E8%B8%AA%E6%95%88%E6%9E%9C/"/>
+    <id>http://lizongyu1293306035.github.io/2020/02/15/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-%E7%9C%BC%E7%90%83%E8%B7%9F%E8%B8%AA%E6%95%88%E6%9E%9C/</id>
     <published>2020-02-15T15:16:32.000Z</published>
     <updated>2020-02-21T13:39:03.472Z</updated>
     
@@ -79,9 +79,9 @@
     
     
     
-      <category term="前端学习" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"/>
+      <category term="前端学习" scheme="http://lizongyu1293306035.github.io/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="特效" scheme="http://yoursite.com/tags/%E7%89%B9%E6%95%88/"/>
+      <category term="特效" scheme="http://lizongyu1293306035.github.io/tags/%E7%89%B9%E6%95%88/"/>
     
   </entry>
   
