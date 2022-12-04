@@ -1,0 +1,472 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>数理统计 | Mr'Li</title><meta name="author" content="李宗雨"><meta name="copyright" content="李宗雨"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数理统计的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数理统计">
+<meta property="og:url" content="https://lizongyu1293306035.github.io/2022/12/04/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Mr&#39;Li">
+<meta property="og:description" content="数理统计的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lizongyu1293306035.github.io/img/cover/2.jpg">
+<meta property="article:published_time" content="2022-12-04T12:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-04T12:25:36.103Z">
+<meta property="article:author" content="李宗雨">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lizongyu1293306035.github.io/img/cover/2.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lizongyu1293306035.github.io/2022/12/04/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数理统计',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-04 20:25:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr'Li</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数理统计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-04T12:00:00.000Z" title="发表于 2022-12-04 20:00:00">2022-12-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-04T12:25:36.103Z" title="更新于 2022-12-04 20:25:36">2022-12-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数理统计"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、数理统计的几个基本概念"><a href="#一、数理统计的几个基本概念" class="headerlink" title="一、数理统计的几个基本概念"></a>一、数理统计的几个基本概念</h1><p><strong>总体</strong>：被研究对象的全体称为总体（或母体），并把组成总体的每一个单元成为个体。</p>
+<p><strong>样本</strong>：从总体中抽出的部分个体组成的集合。样本中所含的个体成为样品。样本中样品个数称为样品量或样品容量。</p>
+<h2 id="1-1-一些统计量"><a href="#1-1-一些统计量" class="headerlink" title="1.1 一些统计量"></a><strong>1.1 一些统计量</strong></h2><p>$\frac{1}{n}\sum_{i=1}^{n}{X_i}$：记作$\overline X$，称为样本均值；</p>
+<p>$\frac{1}{n}\sum_{i=1}^n({X_i-\overline X})^2$：记作$S^2$，称为样本方差；</p>
+<p>$\sqrt{\frac{1}{n}\sum_{i=1}^n({X_i-\overline X})^2}$：记作$S$，称为样本标准差；</p>
+<p>$\frac{1}{n-1}\sum_{i=1}^n({X_i-\overline X})^2$：记作$S^{*2}$，称为修正样本方差；</p>
+<p>$\sqrt{\frac{1}{n-1}\sum_{i=1}^n({X_i-\overline X})^2}$：记作$S^*$，称为修正样本标准差；</p>
+<p>$\frac{1}{n}\sum_{i=1}^{n}X^k_i$：记作$\overline{X^k}$，称为样本k阶原点矩（k为正整数）；</p>
+<p>$\frac{1}{n}\sum_{i=1}^{n}(X_i-\overline{X})^k$：记作$\mu_k$，称为样本k阶中心矩（k为正整数）。</p>
+<h2 id="1-2-常用统计分布"><a href="#1-2-常用统计分布" class="headerlink" title="1.2 常用统计分布"></a><strong>1.2 常用统计分布</strong></h2><h3 id="1-2-1-chi-2-分布"><a href="#1-2-1-chi-2-分布" class="headerlink" title="1.2.1  $\chi^2$分布"></a>1.2.1  $\chi^2$分布</h3><p><strong>定义</strong>：设随机变量$X_1,X_2,…,X_n$独立同分布，且$X_i$~N(0,1)，$i$=1,2,…,n，则随机变量</p>
+<script type="math/tex; mode=display">
+\chi^2=\sum_{i=1}^{n}X_i^2</script><p>所服从的分布称为<strong>自由度</strong>为$n$的$\chi^2$分布，记作$\chi^2$~$\chi^2(n)$.</p>
+<h3 id="1-2-2-t-分布"><a href="#1-2-2-t-分布" class="headerlink" title="1.2.2  $t$分布"></a>1.2.2  $t$分布</h3><p><strong>定义</strong>：设$X,Y$独立，且$X \sim N(0,1),Y\sim \chi^2(n)$,则随机变量</p>
+<script type="math/tex; mode=display">
+t=\frac{X}{\sqrt{Y/n}}</script><p>称为<strong>自由度</strong>为$n$的$t$变量，它服从的分布为$t$分布，记作$t\sim t(n)$.</p>
+<h3 id="1-2-3-F-分布"><a href="#1-2-3-F-分布" class="headerlink" title="1.2.3  $F$分布"></a>1.2.3  $F$分布</h3><p><strong>定义</strong>：设$X、Y$独立，且</p>
+<script type="math/tex; mode=display">
+X\sim \chi^2(m),Y\sim \chi^2(n),</script><p>则随机变量</p>
+<script type="math/tex; mode=display">
+F = \frac{X/m}{Y/n} = \frac{X}{Y}\ast\frac{n}{m}</script><p>称为<strong>自由度</strong>为<strong>（m,n）</strong>的$F$分布。记作$F\sim F(m,n)$，其中<em>m</em>为第一自由度，<em>n</em>为第二自由度。</p>
+<h2 id="1-3-关于统计量的一些定理及其推论"><a href="#1-3-关于统计量的一些定理及其推论" class="headerlink" title="1.3 关于统计量的一些定理及其推论"></a><strong>1.3 关于统计量的一些定理及其推论</strong></h2><p><strong>定理1</strong>：设随机变量$X_1,X_2,…,X_n$ 相互独立，且</p>
+<script type="math/tex; mode=display">
+X_i\sim N(\mu_i,\sigma_i^2)(i=1,2,...,n),</script><p>则它们的任一确定的线性函数</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^nk_iX_i\sim N(\sum_{i=1}^nk_i\mu_i,\sum_{i=1}^nk_i^2\sigma_i^2),</script><p>其中常数$k_1,k_2,…,k_n$不全为零。</p>
+<p><strong>推论1</strong>：设总体$X\sim N(\mu,\sigma^2)$,而$(X_1,X_2,…,X_n)$是它的一个样本，则样本的任一确定的线性函数</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^nk_iX_i\sim N(\mu\sum_{i=1}^nk_i,\sigma^2\sum_{i=1}^nk_i^2),</script><p>其中常数$k_1,k_2,…,k_n$不全为零。</p>
+<p><strong>推论2(正态分布的标准化)</strong>：$X\sim N(\mu,\sigma^2)$,则</p>
+<script type="math/tex; mode=display">
+\overline{X}\sim N(\mu,\frac{\sigma^2}{n}),</script><p>且样本均值$\overline{X}$有</p>
+<script type="math/tex; mode=display">
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1).</script><p><strong>推论3</strong>：</p>
+<script type="math/tex; mode=display">
+X\sim N(\mu_1,\sigma_1^2),(X_1,X_2,...,X_{n1})为X的样本，</script><script type="math/tex; mode=display">
+Y\sim N(\mu_2,\sigma_2^2),(Y_1,Y_2,...,Y_{n2})为Y的样本,则</script><script type="math/tex; mode=display">
+(\overline{X}-\overline{Y})\sim N(\mu_1-\mu_2,\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}),</script><p>或</p>
+<script type="math/tex; mode=display">
+\frac{（\overline{X}-\overline{Y}）-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}\sim N(0,1).</script><p><strong>定理2</strong>：总体$X\sim N(\mu,\sigma^2),(X_1,X_2,…,X_n)$是X的一个样本则</p>
+<p>(1)样本均值$\overline{X}\sim N(\mu,\frac{\sigma^2}{n}),$即$\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)$;</p>
+<p>(2)样本均值$\overline{X}$与样本方差$S^2$独立；</p>
+<p>(3)$\frac{nS^2}{\sigma^2}=\frac{(n-1){S^*}^2}{\sigma^2}=\frac{1}{\sigma^2}\sum_{i=1}^n(X_i-\overline{X})^2 \sim \chi^2(n-1).$</p>
+<p><strong>推论1</strong>：总体$X\sim N(\mu,\sigma^2),(X_1,X_2,…,X_n)$是X的一个样本，则</p>
+<script type="math/tex; mode=display">
+\frac{\overline{X}-\mu}{S^*/\sqrt{n}}=\frac{\overline{X}-\mu}{S/\sqrt{n-1}}\sim t(n-1)</script><p><strong>推论2</strong>：</p>
+<script type="math/tex; mode=display">
+X\sim N(\mu_1,\sigma^2),(X_1,X_2,...,X_{n1})为X的样本，</script><script type="math/tex; mode=display">
+Y\sim N(\mu_2,\sigma^2),(Y_1,Y_2,...,Y_{n2})为Y的样本,</script><p>两样本独立，则</p>
+<script type="math/tex; mode=display">
+\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{S_w\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\sim t(n_1+n_2-2),</script><p>其中</p>
+<script type="math/tex; mode=display">
+S_w=\sqrt{\frac{n_1S_1^2+n_2S_2^2}{n_1+n_2-2}}=\sqrt{\frac{(n_1-1){S_1^*}^2+(n_2-1){S_2^*}^2}{n_1+n_2-2}},</script><p><strong>推论3</strong>：</p>
+<script type="math/tex; mode=display">
+X\sim N(\mu_1,\sigma_1^2),(X_1,X_2,...,X_{n1})为X的样本，</script><script type="math/tex; mode=display">
+Y\sim N(\mu_2,\sigma_2^2),(Y_1,Y_2,...,Y_{n2})为Y的样本,两样本独立，则</script><script type="math/tex; mode=display">
+\frac{(S_1^*)^2}{(S_2^*)^2}*\frac{\sigma_2^2}{\sigma_1^2} \sim F(n_1-1,n_2-1)</script><p>或</p>
+<script type="math/tex; mode=display">
+\frac{n_1S_1^2}{n_2S_2^2}*\frac{(n_2-1)\sigma_2^2}{(n_1-1)\sigma_1^2}\sim F(n_1-1,n_2-1)</script><h1 id="二、参数估计"><a href="#二、参数估计" class="headerlink" title="二、参数估计"></a>二、参数估计</h1><p><strong>知识点回顾</strong>——<strong>矩</strong></p>
+<p>​    • 总体k阶原点矩：$\mu_k=E(X^k),\quad k=1,2,…$     特别地：$\mu_1=E(X)$</p>
+<p>​    • 总体k阶中心矩：$v_k=E[X-E(X)]^k,\quad k=1,2,…$     特别地：$v_2=D(X)$</p>
+<p>​    • 样本k阶原点矩：$a_k=(\sum x_i^k)/n,\quad k=1,2,…$    特别地：$a_1=\overline{x}$</p>
+<p>​    • 样本k阶中心矩：$b_k=\sum (x_i-x)^k/n,\quad k=1,2,…$    特别地$b_2={s^*}^2$</p>
+<h2 id="2-1-参数估计的几种方法"><a href="#2-1-参数估计的几种方法" class="headerlink" title="2.1 参数估计的几种方法"></a>2.1 参数估计的几种方法</h2><h3 id="2-1-1-矩估计"><a href="#2-1-1-矩估计" class="headerlink" title="2.1.1  矩估计"></a>2.1.1  矩估计</h3><p><strong>基本原理</strong>：“替换原理”</p>
+<p><strong>基本思想</strong>：用样本矩（函数）估计总体矩（函数）</p>
+<p>​    •用样本均值估计总体均值<em>E</em>(<em>X</em>)；</p>
+<p>​    •用样本方差估计总体方差D(<em>X</em>)；</p>
+<p>​    •用样本的 <em>p</em> 分位数估计总体的 <em>p</em> 分位数；</p>
+<p>​    •用样本中位数估计总体中位数。</p>
+<p><strong>理论依据</strong>:大数定律或格列汶科定理。</p>
+<p><strong>优缺点</strong>：</p>
+<p>​    优点：统计思想简单明确,易为人们接受,且在总体分布未知场合也可使用。</p>
+<p>​    缺点：1.不唯一，2.样本各阶矩的观测值受异常值影响较大,不够稳健,实   际中要尽量避免使用样本的高阶矩。</p>
+<p><strong>一般求解步骤</strong>：</p>
+<p>(1) 计算总体X的前k阶原点矩</p>
+<p>​    连续型：</p>
+<script type="math/tex; mode=display">
+\mu_l=E(x^l)=\int_{-\infty}^{+\infty}x^l*f(x;\theta_1,\theta_2,...,\theta_k)dx</script><p>​    离散型：</p>
+<script type="math/tex; mode=display">
+\mu_l=E(x^l)=\sum_{i=1}^\infty x_i^lp(x_i;\theta_1,\theta_2,...,\theta_k)</script><p>(2) 令样本矩=总体矩</p>
+<script type="math/tex; mode=display">
+\frac{1}{n}\sum_{i=1}^nx_i^l=E(x^l),\quad l=1,2,...,k</script><p>(3) 求解上述方程，得到$\theta_l$的矩估计为</p>
+<script type="math/tex; mode=display">
+\hat{\theta_l}=\hat{\theta_l}(x_1,...,x_n),\quad l=1,2,...,k</script><h3 id="2-1-2-极大似然估计"><a href="#2-1-2-极大似然估计" class="headerlink" title="2.1.2  极大似然估计"></a>2.1.2  极大似然估计</h3><p><strong>极大似然原理</strong>：概率最大的事件最可能出现。</p>
+<p><strong>一般求解步骤</strong>：</p>
+<p>（1）写出样本的似然函数</p>
+<script type="math/tex; mode=display">
+L(\theta)=L(\theta;x_1,...,x_n)=
+\begin{cases}
+\prod_{i=1}^nP(X_i=x_i;\theta)(离散型)\\[5ex]
+\prod_{i=1}^nf(x_i;\theta)（连续型）
+\end{cases}</script><p>（2）求似然函数的最大值点</p>
+<p>​    （a）求对数似然函数</p>
+<script type="math/tex; mode=display">
+lnL(\theta)=lnL(\theta;x_1,...,x_n)=
+\begin{cases}
+\sum_{i=1}^{n}lnP(X_i=x_i;\theta)\\[5ex]
+\sum_{i=1}^nlnf(x_i;\theta)
+\end{cases}</script><p>​    （b）求对数似然函数的驻点:$\frac{dlnL(\theta)}{d\theta}=0$</p>
+<p>​    （c）判别求出的驻点是否为最大值点。</p>
+<h2 id="2-2-估计量的评选标准"><a href="#2-2-估计量的评选标准" class="headerlink" title="2.2 估计量的评选标准"></a>2.2 估计量的评选标准</h2><h3 id="2-2-1-无偏性"><a href="#2-2-1-无偏性" class="headerlink" title="2.2.1 无偏性"></a>2.2.1 无偏性</h3><p>估计量$\hat{\theta}=T(X_1,X_2,…,X_n)$是一个随机变量，对于不同的样本有不同的估计值，而这些估计值对于待估参数$\theta$的真值一定会有所偏差，但若有</p>
+<script type="math/tex; mode=display">
+E_{\theta}\hat{\theta}=\theta,</script><p>则可以称$\hat{\theta}=T(X_1,X_2,…,X_n)$为$\theta$的一个无偏估计量，否则就称为有偏估计量。</p>
+<p><strong>推论</strong>：</p>
+<p>（1）样本均值是总体均值的无偏估计。</p>
+<p>（2）样本k阶原点矩$a_k$是总体k阶原点矩$\mu_k$的无偏估计。</p>
+<p>（3）样本方差${S^*}^2$是总体方差$\sigma^2$的有偏估计，即</p>
+<script type="math/tex; mode=display">
+ES^2=E(\frac{n-1}{n}{S^*}^2)=\frac{n-1}{n}E{S^*}^2=\frac{n-1}{n}DX\ne DX</script><p>​    （a）当样本量趋于无穷时，有$E(S_n^2)\to \sigma^2$，称$S_n^2$为$\sigma^2$的渐进无偏估计。</p>
+<p>​    （b）若对S^2作如下修正:</p>
+<script type="math/tex; mode=display">
+{S^*}^2=\frac{nS_n^2}{n-1}=\frac{1}{n-1}\sum_{i=1}^n(x_i-\overline{x})^2,</script><p>​            则{S^*}^2为总体方差的无偏估计。</p>
+<h3 id="2-2-2-有效性"><a href="#2-2-2-有效性" class="headerlink" title="2.2.2 有效性"></a>2.2.2 有效性</h3><p>一个好的估计量，是需要在无偏性基础上，再对估计值的波动大小的程度进行分析后得到的。</p>
+<p><strong>定义</strong>：$\hat{g_1}(X_1,X_2,…,X_n)$和$\hat{g_2}(X_1,X_2,…,X_n)$都是待估参数$g(\theta)$的无偏估计量，若有</p>
+<script type="math/tex; mode=display">
+D_{\theta}\hat{g_1}(X_1,X_2,...,X_n)\le D_{\theta}\hat{g_2}(X_1,X_2,...,X_n) ,\\(\forall\theta\in \Theta)</script><p>则称$\hat{g_1}(X_1,X_2,…,X_n)$比$\hat{g_2}(X_1,X_2,…,X_n)$有效。</p>
+<h3 id="2-2-3-相合性"><a href="#2-2-3-相合性" class="headerlink" title="2.2.3 相合性"></a>2.2.3 相合性</h3><p><strong>估计量相合性的朴素想法：</strong>样本容量n越大时，希望对未知参数$\theta$的估计值越精确。</p>
+<p><strong>定义</strong>：{$\hat{\theta}_n=T_n(X_1,X_2,…,X_n)$}为未知参数$\theta$的估计量序列，$\Theta$为参数空间，若对任意$\epsilon &gt;0$,有</p>
+<script type="math/tex; mode=display">
+\lim_{n\to\infty}P_{\theta}\{|\hat{\theta}_n-\theta|<\epsilon\}=1,\quad \forall\theta\in \Theta,</script><p>即$\hat{\theta}_n$依概率收敛于$\theta$:</p>
+<script type="math/tex; mode=display">
+\hat{\theta} \stackrel{P}\to \theta(n\to\infty),\quad \forall\theta\in \Theta,</script><p>则称$\hat{\theta}$为$\theta$的相合（一致）估计量，也可以说估计量$\hat{\theta}_n$具有相合性（一致性）。</p>
+<h2 id="2-3-区间估计"><a href="#2-3-区间估计" class="headerlink" title="2.3 区间估计"></a>2.3 区间估计</h2><p><strong>置信区间（或区间估计）定义</strong>：设总体X的分布函数为$F(x;\theta),\theta$为未知参数$\theta \in \Theta$，$(X_1,X_2,…,X_n)$为X的一个样本，若对事先给定的$\alpha(0&lt;\alpha&lt;1)$存在两个统计量$T_1=T_1(X_1,X_2,…,X_n),T_2=T_2(X_1,X_2,…,X_n)$使得</p>
+<script type="math/tex; mode=display">
+P\{T_1(X_1,X_2,...,X_n)<\theta<T_2(X_1,X_2,...,X_n)\}=1-\alpha,\quad \forall \theta\in\Theta</script><p>则称区间（$T_1,T_2$）为参数$\theta$的$1-\alpha$的<strong>置信区间</strong>或$1-\alpha$的<strong>区间估计</strong>。其中$T_1,T_2$分别称为<strong>置信下限和置信上限</strong>，$1-\alpha$称为之心区间$（T_1,T_2）$的<strong>置信度或置信水平</strong>，$\alpha$为<strong>显著性水平或误判风险</strong>。</p>
+<h3 id="2-3-1-正态总体（-X-sim-N-mu-sigma-2-）参数的区间估计"><a href="#2-3-1-正态总体（-X-sim-N-mu-sigma-2-）参数的区间估计" class="headerlink" title="2.3.1 正态总体（$X\sim N(\mu,\sigma^2 )$）参数的区间估计"></a>2.3.1 正态总体（$X\sim N(\mu,\sigma^2 )$）参数的区间估计</h3><p>服从正态总体下的区间估计：</p>
+<p><strong>1.</strong> $\sigma^2 $已知，求$\mu$的置信区间</p>
+<p>求$\mu$的$1-\alpha$置信区间，即$P{T_1&lt;\mu&lt;T_2}=1-\alpha$.</p>
+<p>构造一个分布已知的样本函数。已知$\overline{X}\sim N(\mu,\frac{\sigma^2}{n})$,即</p>
+<script type="math/tex; mode=display">
+\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}=U\sim N(0,1).</script><p>根据给定的置信度$1-\alpha$确定分位点</p>
+<script type="math/tex; mode=display">
+P\{|U|<u_{1-\frac{\alpha}{2}}\}=1-\alpha,</script><p>即，</p>
+<script type="math/tex; mode=display">
+P\{|\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}|<u_{1-\frac{\alpha}{2}}\}=1-\alpha
+\</script><p>变形得</p>
+<script type="math/tex; mode=display">
+P\{\overline{X}-\frac{\sigma}{\sqrt{n}}*u_{1-\frac{\sigma}{2}}<\mu<\overline{X}+\frac{\sigma}{\sqrt{n}}*u_{1-\frac{\alpha}{2}}\}=1-\alpha</script><p>故$\mu$的$1-\alpha$的置信区间为</p>
+<script type="math/tex; mode=display">
+(\overline{X}-\frac{\sigma}{\sqrt{n}}*u_{1-\frac{\sigma}{2}},\overline{X}+\frac{\sigma}{\sqrt{n}}*u_{1-\frac{\sigma}{2}})</script><p><strong>2.</strong> $\sigma^2 $未知，求$\mu$的置信区间</p>
+<p>已知分布</p>
+<script type="math/tex; mode=display">
+t=\frac{\overline{X}-\mu}{S^*/\sqrt{n}}\sim t(n-1).</script><p>根据给定的置信度$1-\alpha$确定分位点</p>
+<script type="math/tex; mode=display">
+P\{|t|<t_{1-\frac{\alpha}{2}}(n-1)\}=1-\alpha,</script><p>即，</p>
+<script type="math/tex; mode=display">
+p\{\frac{|\overline{X}-\mu|}{S^*/\sqrt{n}}<t_{1-\frac{\alpha}{2}}(n-1)\}=1-\alpha,</script><p>变形得，</p>
+<script type="math/tex; mode=display">
+P\{\overline{X}-\frac{S^*}{\sqrt{n}}*t_{1-\frac{\alpha}{2}}(n-1)<\mu<\overline{X}+\frac{S^*}{\sqrt{n}}*t_{1-\frac{\alpha}{2}}(n-1)\}=1-\alpha.</script><p>则$\mu$的$1-\alpha$置信区间为</p>
+<script type="math/tex; mode=display">
+(\overline{X}-\frac{S^*}{\sqrt{n}}*t_{1-\frac{\alpha}{2}}(n-1),\overline{X}+\frac{S^*}{\sqrt{n}}*t_{1-\frac{\alpha}{2}}(n-1))</script><p>也可改写为</p>
+<script type="math/tex; mode=display">
+(\overline{X}-\frac{S}{\sqrt{n-1}}*t_{1-\frac{\alpha}{2}}(n-1),\overline{X}+\frac{S}{\sqrt{n-1}}*t_{1-\frac{\alpha}{2}}(n-1)).</script><p><strong>3.</strong> 正态总体方差的区间估计</p>
+<p>已知分布</p>
+<script type="math/tex; mode=display">
+\chi^2=\frac{(n-1){S^*}^2}{\sigma^2}\sim \chi^2(n-1).</script><p>根据给定的置信度$1-\alpha$,选$k_1,k_2(0&lt;k_1&lt;k_2)$满足</p>
+<script type="math/tex; mode=display">
+P\{k_1<\chi^2<k_2 \}=1-\alpha,</script><p>即</p>
+<script type="math/tex; mode=display">
+P\{\chi^2 \le k_1 \}+P\{\chi^2 \ge k_2 \}=\alpha.</script><p>为方便通常选择$k_1,k_2$使得</p>
+<script type="math/tex; mode=display">
+P\{\chi^2 \le k_1 \ \}=P\{\chi^2 \ge k_2 \}=\frac{\alpha}{2}.</script><p>根据$\chi^2(n-1)$分位数定义得</p>
+<script type="math/tex; mode=display">
+k_1=\chi_{\frac{\alpha}{2}}^2(n-1),k_2=\chi_{1-\frac{\alpha}{2}}^2(n-1),</script><p>故</p>
+<script type="math/tex; mode=display">
+P\{\chi_{\frac{\alpha}{2}}^2(n-1)<\frac{(n-1){S^*}^2}{\sigma^2}<\chi_{1-\frac{\alpha}{2}}^2(n-1) \}</script><p>即</p>
+<script type="math/tex; mode=display">
+P\{\frac{(n-1){S^*}^2}{\chi^2_{1-\frac{\alpha}{2}}(n-1)} <\sigma^2< \frac{(n-1){S^*}^2}{\chi^2_{\frac{\alpha}{2}}(n-1)} \}=1-\alpha.</script><p>所求$\sigma^2$的$1-\alpha$置信区间为</p>
+<script type="math/tex; mode=display">
+(\frac{(n-1){S^*}^2}{\chi^2_{1-\frac{\alpha}{2}}(n-1)},\frac{(n-1){S^*}^2}{\chi^2_{\frac{\alpha}{2}}(n-1)})=(\frac{n{S}^2}{\chi^2_{1-\frac{\alpha}{2}}(n-1)},\frac{n{S}^2}{\chi^2_{\frac{\alpha}{2}}(n-1)}).</script><p><strong>4.</strong> 两个正态总体的均值差的区间估计</p>
+<p>已知分布$X\sim N(\mu_1,\sigma_1^2),(X_1,X_2,…,X_n)$为X的容量为$n_1$的样本，$Y\sim N(\mu_2,\sigma_2^2),(Y_1,Y_2,…,Y_n)$为Y的容量为$n_2$的样本。</p>
+<p>（a）$\sigma_1^2,\sigma_2^2$都为已知，求$\mu_1-\mu_2$的置信区间</p>
+<p>已知分布</p>
+<script type="math/tex; mode=display">
+\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}=U\sim N(0,1).</script><p>由$P{|U|&lt;u_{1-\frac{\alpha}{2}}}=1-\alpha$得</p>
+<script type="math/tex; mode=display">
+P\{-u_{1-\frac{\alpha}{2}}<\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}<u_{1-\frac{\alpha}{2}} \}=1-\alpha,</script><p>即</p>
+<script type="math/tex; mode=display">
+P\{(\overline{X}-\overline{Y})-u_{1-\frac{\alpha}{2}}*\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}<(\mu_1-\mu_2)<(\overline{X}-\overline{Y})+u_{1-\frac{\alpha}{2}}*\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}} \}=1-\alpha,</script><p>故置信区间为</p>
+<script type="math/tex; mode=display">
+((\overline{X}-\overline{Y})-u_{1-\frac{\alpha}{2}}*\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}},(\overline{X}-\overline{Y})+u_{1-\frac{\alpha}{2}}*\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}})</script><p>（b）$\sigma_1^2=\sigma_2^2=\sigma^2，\sigma^2$未知，求$\mu_1-\mu_2$的置信区间</p>
+<p>已知分布</p>
+<script type="math/tex; mode=display">
+\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{S_w\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}=t\sim t(n_1+n_2-2),</script><p>其中</p>
+<script type="math/tex; mode=display">
+S_w=\sqrt{\frac{(n_1-1){S_1^*}^2+(n_2-1){S_2^*}^2}{n_1+n_2-2}}=\sqrt{\frac{n_1S_1^2+n_2S_2^2}{n_1+n_2-2}}.</script><p>由t分布的分位数得，</p>
+<script type="math/tex; mode=display">
+P\{-t_{1-\frac{\alpha}{2}}(n_1+n_2-2)<\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{S_w\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}<t_{1-\frac{\alpha}{2}}(n_1+n_2-2) \}=1-\alpha,</script><p>故置信区间为</p>
+<script type="math/tex; mode=display">
+((\overline{X}-\overline{Y})-t_{1-\frac{\alpha}{2}}(n_1+n_2-2)S_w\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}),(\overline{X}-\overline{Y})+t_{1-\frac{\alpha}{2}}(n_1+n_2-2)S_w\sqrt{\frac{1}{n_1}+\frac{1}{n_2}})</script><p>（c）$\sigma_1^2 \ne \sigma_2^2$且都未知，求$\mu_1-\mu_2$的置信区间</p>
+<p>已知分布</p>
+<script type="math/tex; mode=display">
+\frac{(\overline{X}-\overline{Y})-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}}\stackrel{L}\to N(0,1).</script><p>置信区间为</p>
+<script type="math/tex; mode=display">
+((\overline{X}-\overline{Y})-\mu_{1-\frac{\alpha}{2}}\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}},(\overline{X}-\overline{Y})+\mu_{1-\frac{\alpha}{2}}\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}})</script><p><strong>5.</strong>两个正态总体的方差的区间估计</p>
+<p>已知分布</p>
+<script type="math/tex; mode=display">
+\frac{(S_1^*)^2/(S_2^*)^2}{\sigma_1^2/\sigma_2^2}=F\sim F(n_1-1,n_2-1).</script><p>对于$1-\alpha$取$k_1,k_2$,为方便使得</p>
+<script type="math/tex; mode=display">
+P\{F\le k_1 \}=P\{F\ge k_2 \}=\frac{\alpha}{2}</script><p>由分位数定义得</p>
+<script type="math/tex; mode=display">
+k_1=F_\frac{\alpha}{2}(n_1-1,n_2-1),k_2=F_{1-\frac{\alpha}{2}}(n_1-1,n_2-1)</script><p>故可得，</p>
+<script type="math/tex; mode=display">
+P\{\frac{(S_1^*)^2/(S_2^*)^2}{F_{1-\frac{\alpha}{2}}(n_1-1,n_2-1)}
+<\frac{\sigma_1^2}{\sigma_2^2}
+<\frac{(S_1^*)^2/(S_2^*)^2}{F_{\frac{\alpha}{2}}(n_1-1,n_2-1)} \}=1-\alpha</script><p>故置信区间为</p>
+<script type="math/tex; mode=display">
+(\frac{(S_1^*)^2/(S_2^*)^2}{F_{1-\frac{\alpha}{2}}(n_1-1,n_2-1)},\frac{(S_1^*)^2/(S_2^*)^2}{F_{\frac{\alpha}{2}}(n_1-1,n_2-1)} \})</script><h3 id="2-3-2-（0-1）分布的参数的区间估计"><a href="#2-3-2-（0-1）分布的参数的区间估计" class="headerlink" title="2.3.2 （0-1）分布的参数的区间估计"></a>2.3.2 （0-1）分布的参数的区间估计</h3><p>已知分布</p>
+<script type="math/tex; mode=display">
+\frac{\overline{X}-EX}{\sqrt{DX/n}} \stackrel{L} \to N(0,1)\quad(n\to\infty)</script><p>对于（0，1）分布有：$EX=p,DX=p(1-p),0&lt;p&lt;1$,故</p>
+<script type="math/tex; mode=display">
+\frac{\overline{X}-p}{\sqrt{p(1-p)/n}} \stackrel{L} \to N(0,1)\quad(n\to\infty)</script><p>根据标准正态分布的分位数，对于充分大的n近似有</p>
+<script type="math/tex; mode=display">
+P\{|\frac{\overline{X}-p}{\sqrt{p(1-p)/n}}|<u_{1-\frac{\alpha}{2}}\}=1-\alpha</script><p>不等式两边平方后整理的得</p>
+<script type="math/tex; mode=display">
+P\{(n+u^2_{1-\frac{\alpha}{2}})p^2-(2n\overline{X}+u^2_{1-\frac{\alpha}{2}})p+n\overline{X^2}<0 \}=1-\alpha</script><p>记</p>
+<script type="math/tex; mode=display">
+a=n+u^2_{1-\frac{\alpha}{2}}.b=-(2n\overline{X}+u^2_{1-\frac{\alpha}{2}}),c=n\overline{X^2}</script><p>则可得</p>
+<script type="math/tex; mode=display">
+P\{ap^2+bp+c<0 \}=1-\alpha</script><p>则置信区间为</p>
+<script type="math/tex; mode=display">
+(\frac{1}{2a}(-b-\sqrt{b^2-4ac}),\frac{1}{2a}(-b+\sqrt{b^2-4ac}))</script><h1 id="三、假设检验"><a href="#三、假设检验" class="headerlink" title="三、假设检验"></a>三、假设检验</h1><h2 id="3-1-关于假设检验"><a href="#3-1-关于假设检验" class="headerlink" title="3.1 关于假设检验"></a>3.1 关于假设检验</h2><p><strong>假设检验的共同点：</strong></p>
+<p>​    （1）先根据实际问题的要求提出一个关于随机变量的一种论断，称为统计假设，记为$H_0$.</p>
+<p>​    （2）抽取样本和集中样本有关信息，要求对假设$H_0$的真伪进行判断，称为检验假设。最后对假设$H_0$做出拒绝或接受的决策。</p>
+<p><strong>依据原理：</strong>小概率事件原理（也称实际推断原理），该原理说“小概率事件再一次试验中几乎是不可能发生的”。</p>
+<p><strong>假设检验的一般做法</strong>：设有某个假设$H_0$需要验证，先假设$H_0$为正确，在此“假设”下合理地构造一个事件A，在$H_0$为正确的条件下A是一个小概率事件。进行一次试验，如果A发生了，那便出现了一个小概率事件。可是小概率事件在一次试验中是不可能发生的，这就与小概率事件原理矛盾，这就表明“假设A为正确的”是错误的，拒绝$H_0$；反之，则接受$H_0$。</p>
+<h2 id="3-2-两类错误"><a href="#3-2-两类错误" class="headerlink" title="3.2 两类错误"></a>3.2 两类错误</h2><p>（1）原假设$H_0$正确却被拒绝。这类错误称为拒真（弃真）错误，也称第一类错误，其发生概率称为拒真概率或犯第一类错误的概率，记作$\alpha$,即</p>
+<script type="math/tex; mode=display">
+P\{拒绝H_0|H_0为真 \}=\alpha</script><p>（2）原假设$H_0$错误，但却接收了，这类错误称为纳伪错误，也成为第二类错误。其发生的概率称为纳伪概率或者犯第二类错误的概率，记为$\beta$,即</p>
+<script type="math/tex; mode=display">
+P\{接收H_0|H_0不真 \}=\beta</script><h2 id="3-3-正态总体均值与方差的检验"><a href="#3-3-正态总体均值与方差的检验" class="headerlink" title="3.3 正态总体均值与方差的检验"></a>3.3 正态总体均值与方差的检验</h2><p>本节总体服从正态分布$X\sim N(\mu,\sigma^2)$。</p>
+<h3 id="3-3-1-方差-sigma-2-已知，对均值-mu-的假设检验"><a href="#3-3-1-方差-sigma-2-已知，对均值-mu-的假设检验" class="headerlink" title="3.3.1 方差$\sigma^2$已知，对均值$\mu$的假设检验"></a>3.3.1 方差$\sigma^2$已知，对均值$\mu$的假设检验</h3><p>三种情况：</p>
+<p>（1）$H_0:\mu=\mu_0;\quad H_1:\mu\ne\mu_0$（双侧检验）</p>
+<p>（2）$H_0:\mu=\mu_0;\quad H_1:\mu&gt;\mu_0$（右侧检验）</p>
+<p>​        $H_0:\mu\le \mu_0;\quad H_1:\mu&gt;\mu_0$（右侧检验）</p>
+<p>（3）$H_0:\mu=\mu_0;\quad H_1:\mu&lt;\mu_0$（左侧检验）</p>
+<p>​        $H_0:\mu\ge \mu_0;\quad H_1:\mu&lt;\mu_0$（左侧检验）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/image-20221022225855055.png" alt="image-20221022225855055"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/image-20221022225911948.png" alt="image-20221022225911948"></p>
+<h3 id="3-3-2-方差-sigma-2-未知，对均值-mu-的假设检验"><a href="#3-3-2-方差-sigma-2-未知，对均值-mu-的假设检验" class="headerlink" title="3.3.2 方差$\sigma^2$未知，对均值$\mu$的假设检验"></a>3.3.2 方差$\sigma^2$未知，对均值$\mu$的假设检验</h3><p>三种情况：</p>
+<p>（1）$H_0:\mu=\mu_0;\quad H_1:\mu\ne\mu_0$（双侧检验）</p>
+<p>（2）$H_0:\mu=\mu_0;\quad H_1:\mu&gt;\mu_0$（右侧检验）</p>
+<p>​        $H_0:\mu\le \mu_0;\quad H_1:\mu&gt;\mu_0$（右侧检验）</p>
+<p>（3）$H_0:\mu=\mu_0;\quad H_1:\mu&lt;\mu_0$（左侧检验）</p>
+<p>​        $H_0:\mu\ge \mu_0;\quad H_1:\mu&lt;\mu_0$（左侧检验）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/image-20221022225855055.png" alt="image-20221022225855055"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/image-20221022225922707.png" alt="image-20221022225922707"></p>
+<h3 id="3-3-3-均值-mu-已知，对方差-sigma-2-的假设检验"><a href="#3-3-3-均值-mu-已知，对方差-sigma-2-的假设检验" class="headerlink" title="3.3.3 均值$\mu$已知，对方差$\sigma^2$的假设检验"></a>3.3.3 均值$\mu$已知，对方差$\sigma^2$的假设检验</h3><p>三种情况：</p>
+<p>（1）$H_0:\sigma^2=\sigma^2_0;\quad H_1:\sigma^2\ne\sigma^2_0$（双侧检验）</p>
+<p>（2）$H_0:\sigma^2=\sigma^2_0;\quad H_1:\sigma^2&gt;\sigma^2_0$（右侧检验）</p>
+<p>​        $H_0:\sigma^2 \le \sigma^2_0;\quad H_1:\sigma^2&gt;\sigma^2_0$（右侧检验）</p>
+<p>（3）$H_0:\sigma^2=\sigma^2_0;\quad H_1:\sigma^2&lt;\sigma^2_0$（左侧检验）</p>
+<p>​        $H_0:\sigma^2 \ge \sigma^2_0;\quad H_1:\sigma^2&lt;\sigma^2_0$（左侧检验）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/image-20221022225215876.png" alt="image-20221022225215876"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/image-20221022225748100.png" alt="image-20221022225748100"></p>
+<h3 id="3-3-4-方差已知时均值差-mu-1-mu-2-的假设检验以及方差未知但是相等时-mu-1-mu-2-的假设检验"><a href="#3-3-4-方差已知时均值差-mu-1-mu-2-的假设检验以及方差未知但是相等时-mu-1-mu-2-的假设检验" class="headerlink" title="3.3.4 方差已知时均值差$\mu_1-\mu_2$的假设检验以及方差未知但是相等时$\mu_1-\mu_2$的假设检验"></a>3.3.4 方差已知时均值差$\mu_1-\mu_2$的假设检验以及方差未知但是相等时$\mu_1-\mu_2$的假设检验</h3><p>三种情况</p>
+<p>（1）$H_0:\mu_1-\mu_2=\delta;\quad \mu_1-\mu_2\ne\delta$（双侧检验）</p>
+<p>（2）$H_0:\mu_1-\mu_2=\delta;\quad \mu_1-\mu_2&gt;\delta$（右侧检验）</p>
+<p>​        $H_0:\mu_1-\mu_2\le\delta;\quad \mu_1-\mu_2&gt;\delta$（右侧检验）</p>
+<p>（3）$H_0:\mu_1-\mu_2=\delta;\quad \mu_1-\mu_2&lt;\delta$（左侧检验）</p>
+<p>​        $H_0:\mu_1-\mu_2\ge \delta;\quad \mu_1-\mu_2&lt;\delta$（左侧检验）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/image-20221023144741697.png" alt="image-20221023144741697"></p>
+<p>其中</p>
+<script type="math/tex; mode=display">
+S_w=\sqrt{\frac{(n_1-1){S_1^*}^2+(n_2-1){S_2^*}^2}{n_1+n_2-2}}=\sqrt{\frac{n_1S_1^2+n_2S_2^2}{n_1+n_2-2}}.</script><h3 id="3-3-5-mu-1-mu-2-为未知时方差的假设检验以及-mu-1-mu-2-为已知时方差的假设检验"><a href="#3-3-5-mu-1-mu-2-为未知时方差的假设检验以及-mu-1-mu-2-为已知时方差的假设检验" class="headerlink" title="3.3.5 $\mu_1,\mu_2$为未知时方差的假设检验以及$\mu_1,\mu_2$为已知时方差的假设检验"></a>3.3.5 $\mu_1,\mu_2$为未知时方差的假设检验以及$\mu_1,\mu_2$为已知时方差的假设检验</h3><p>三种情况：</p>
+<p>（1）$H_0:\sigma_1^2=\sigma^2_2;\quad H_1:\sigma_1^2\ne\sigma^2_2$（双侧检验）</p>
+<p>（2）$H_0:\sigma_1^2=\sigma^2_2;\quad H_1:\sigma_1^2&gt;\sigma^2_2$（右侧检验）</p>
+<p>​        $H_0:\sigma^2_1 \le \sigma^2_2;\quad H_1:\sigma^2_1&gt;\sigma^2_2$（右侧检验）</p>
+<p>（3）$H_0:\sigma_1^2=\sigma^2_2;\quad H_1:\sigma^2_1&lt;\sigma^2_2$（左侧检验）</p>
+<p>​        $H_0:\sigma^2_1 \ge \sigma^2_2;\quad H_1:\sigma_1^2&lt;\sigma^2_2$（左侧检验）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/image-20221023145641503.png" alt="image-20221023145641503"></p>
+<h2 id="3-4-非正态总体均值的假设检验"><a href="#3-4-非正态总体均值的假设检验" class="headerlink" title="3.4 非正态总体均值的假设检验"></a>3.4 非正态总体均值的假设检验</h2><p>总体分布未知时。</p>
+<h3 id="3-4-1-方差已知时一个总体的均值的假设检验"><a href="#3-4-1-方差已知时一个总体的均值的假设检验" class="headerlink" title="3.4.1 方差已知时一个总体的均值的假设检验"></a>3.4.1 方差已知时一个总体的均值的假设检验</h3><p>三种情况：</p>
+<p>（1）$H_0:EX=\mu_0;\quad H_1:EX\ne\mu_0$（双侧检验）</p>
+<p>（2）$H_0:EX=\mu_0;\quad H_1:EX&gt;\mu_0$（右侧检验）</p>
+<p>​        $H_0:EX\le \mu_0;\quad H_1:EX&gt;\mu_0$（右侧检验）</p>
+<p>（3）$H_0:EX=\mu_0;\quad H_1:EX&lt;\mu_0$（左侧检验）</p>
+<p>​        $H_0:EX\ge \mu_0;\quad H_1:EX&lt;\mu_0$（左侧检验）</p>
+<p>参3.3节</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/04/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数值分析</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">矩阵理论</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/" title="矩阵理论"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-04</div><div class="title">矩阵理论</div></div></a></div><div><a href="/2022/12/04/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-04</div><div class="title">数值分析</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">李宗雨</div><div class="author-info__description">A Static Website for Learning</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lizongyu1293306035" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1293306035@qq.com" target="_blank" title="Email:1293306035@qq.com"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%9A%84%E5%87%A0%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">一、数理统计的几个基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%B8%80%E4%BA%9B%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 一些统计量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E5%88%86%E5%B8%83"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 常用统计分布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-chi-2-%E5%88%86%E5%B8%83"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1  $\chi^2$分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-t-%E5%88%86%E5%B8%83"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2  $t$分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-F-%E5%88%86%E5%B8%83"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.2.3  $F$分布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%85%B3%E4%BA%8E%E7%BB%9F%E8%AE%A1%E9%87%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9A%E7%90%86%E5%8F%8A%E5%85%B6%E6%8E%A8%E8%AE%BA"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 关于统计量的一些定理及其推论</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">二、参数估计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 参数估计的几种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E7%9F%A9%E4%BC%B0%E8%AE%A1"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1  矩估计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2  极大似然估计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E8%AF%84%E9%80%89%E6%A0%87%E5%87%86"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 估计量的评选标准</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E6%97%A0%E5%81%8F%E6%80%A7"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 无偏性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E6%9C%89%E6%95%88%E6%80%A7"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 有效性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-%E7%9B%B8%E5%90%88%E6%80%A7"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3 相合性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 区间估计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%EF%BC%88-X-sim-N-mu-sigma-2-%EF%BC%89%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 正态总体（$X\sim N(\mu,\sigma^2 )$）参数的区间估计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%EF%BC%880-1%EF%BC%89%E5%88%86%E5%B8%83%E7%9A%84%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 （0-1）分布的参数的区间估计</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.</span> <span class="toc-text">三、假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%85%B3%E4%BA%8E%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 关于假设检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%B8%A4%E7%B1%BB%E9%94%99%E8%AF%AF"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 两类错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE%E7%9A%84%E6%A3%80%E9%AA%8C"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 正态总体均值与方差的检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-%E6%96%B9%E5%B7%AE-sigma-2-%E5%B7%B2%E7%9F%A5%EF%BC%8C%E5%AF%B9%E5%9D%87%E5%80%BC-mu-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.3.1 方差$\sigma^2$已知，对均值$\mu$的假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E6%96%B9%E5%B7%AE-sigma-2-%E6%9C%AA%E7%9F%A5%EF%BC%8C%E5%AF%B9%E5%9D%87%E5%80%BC-mu-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.3.2 方差$\sigma^2$未知，对均值$\mu$的假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-3-%E5%9D%87%E5%80%BC-mu-%E5%B7%B2%E7%9F%A5%EF%BC%8C%E5%AF%B9%E6%96%B9%E5%B7%AE-sigma-2-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.3.3.</span> <span class="toc-text">3.3.3 均值$\mu$已知，对方差$\sigma^2$的假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-4-%E6%96%B9%E5%B7%AE%E5%B7%B2%E7%9F%A5%E6%97%B6%E5%9D%87%E5%80%BC%E5%B7%AE-mu-1-mu-2-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E4%BB%A5%E5%8F%8A%E6%96%B9%E5%B7%AE%E6%9C%AA%E7%9F%A5%E4%BD%86%E6%98%AF%E7%9B%B8%E7%AD%89%E6%97%B6-mu-1-mu-2-%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.3.4.</span> <span class="toc-text">3.3.4 方差已知时均值差$\mu_1-\mu_2$的假设检验以及方差未知但是相等时$\mu_1-\mu_2$的假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-5-mu-1-mu-2-%E4%B8%BA%E6%9C%AA%E7%9F%A5%E6%97%B6%E6%96%B9%E5%B7%AE%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E4%BB%A5%E5%8F%8A-mu-1-mu-2-%E4%B8%BA%E5%B7%B2%E7%9F%A5%E6%97%B6%E6%96%B9%E5%B7%AE%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.3.5.</span> <span class="toc-text">3.3.5 $\mu_1,\mu_2$为未知时方差的假设检验以及$\mu_1,\mu_2$为已知时方差的假设检验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E9%9D%9E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E5%9D%87%E5%80%BC%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 非正态总体均值的假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-%E6%96%B9%E5%B7%AE%E5%B7%B2%E7%9F%A5%E6%97%B6%E4%B8%80%E4%B8%AA%E6%80%BB%E4%BD%93%E7%9A%84%E5%9D%87%E5%80%BC%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">3.4.1.</span> <span class="toc-text">3.4.1 方差已知时一个总体的均值的假设检验</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/04/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数值分析"/></a><div class="content"><a class="title" href="/2022/12/04/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析">数值分析</a><time datetime="2022-12-04T12:00:00.000Z" title="发表于 2022-12-04 20:00:00">2022-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/04/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" title="数理统计"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数理统计"/></a><div class="content"><a class="title" href="/2022/12/04/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" title="数理统计">数理统计</a><time datetime="2022-12-04T12:00:00.000Z" title="发表于 2022-12-04 20:00:00">2022-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/" title="矩阵理论"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="矩阵理论"/></a><div class="content"><a class="title" href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/" title="矩阵理论">矩阵理论</a><time datetime="2022-12-04T11:22:00.000Z" title="发表于 2022-12-04 19:22:00">2022-12-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/footerimg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 By 李宗雨</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
