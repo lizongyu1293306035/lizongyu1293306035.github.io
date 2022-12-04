@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-矩阵理论" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/" class="article-date">
+  <time class="dt-published" datetime="2022-12-04T04:36:16.738Z" itemprop="datePublished">2022-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="矩阵理论"><a href="#矩阵理论" class="headerlink" title="矩阵理论"></a>矩阵理论</h1><h2 id="一、线性空间与线性变换"><a href="#一、线性空间与线性变换" class="headerlink" title="一、线性空间与线性变换"></a>一、线性空间与线性变换</h2><h3 id="1-1-线性空间"><a href="#1-1-线性空间" class="headerlink" title="1.1 线性空间"></a>1.1 线性空间</h3><p><strong>数域</strong>：复数的一个非空集合P含有非零的数，且其中任意两个数的和、差、积、商仍属于该集合，即数集P关于四则运算封闭，则称数集P为一个数域。例如有理数集合Q、实数集合R和复数集合C都是数域。</p>
+<p>所有数域都包含有理数域。特别的，每个数域都包含整数0和1。</p>
+<p><strong>线性空间</strong>：V为非空集合，P为数域。若：</p>
+<p>（1）在V上定义了一个二元运算（通常为加法），即V中任意两个元素x，y</p>
+<p>（2）</p>
+<p>（3）</p>
+<p><strong>矩阵的行列式因子、不变因子和初级因子的计算：</strong></p>
+<p><strong>行列式因子</strong>：$D_n(\lambda)$ 为非零的n阶主子式的行列式值。</p>
+<p><strong>不变因子</strong>：$d_1(\lambda)&#x3D;D_1(\lambda),d_2(\lambda)&#x3D;\frac{D_2(\lambda)}{D_1(\lambda)},…,d_n(\lambda)&#x3D;\frac{D_n(\lambda)}{D_{n-1}(\lambda)}$</p>
+<p><strong>初级因子</strong>：每个幂次数大于零的不变因子分解为互不相同的一次因式的方幂的乘积，所有这些一次因式的方幂（相同的必须按出现次数计算），称为$A(\lambda)$的初级因子。</p>
+<p><strong>约当块与约当形矩阵：</strong></p>
+<p>设A的全部初级因子为：<br>$$<br>(\lambda-\lambda_1)^{k_1},(\lambda-\lambda_2)^{k_2},…,(\lambda-\lambda_s)^{k_s}.<br>$$<br>$\lambda_1,\lambda_2,…,\lambda_s$可能相同，指数$k_1,k_2,…,k_s$也可能有相同。对每个初级因子$(\lambda-\lambda_i)^{k_i}$构造一个$k_i$阶矩阵（约当块）：<br>$$<br>J_i&#x3D;<br>\begin{pmatrix}<br>\lambda_i&amp;1&amp;&amp;&amp; \<br>&amp;\lambda_i&amp;1&amp;&amp; \<br>&amp;&amp;\ddots&amp;\ddots&amp; \<br>&amp;&amp;&amp;\lambda_i&amp;1 \<br>&amp;&amp;&amp;&amp;\lambda_i \<br>\end{pmatrix}<br>,(i&#x3D;1,2,…,s)<br>$$<br>由所有这些约当块构成分块对角矩阵。<br>$$<br>J&#x3D;<br>\begin{pmatrix}<br>J_1&amp;&amp;&amp;&amp; \<br>&amp;J_2&amp;&amp;&amp; \<br>&amp;&amp;\ddots&amp;&amp; \<br>&amp;&amp;&amp;J_{s-1}&amp; \<br>&amp;&amp;&amp;&amp;J_{s} \<br>\end{pmatrix}<br>$$<br>称为矩阵A的约当形矩阵，或A的约当标准形。</p>
+<p><strong>推论</strong>：复数矩阵A与对角矩阵相似充要条件是A的初级因子全为一次式。</p>
+<p><strong>史密斯标准矩阵：</strong></p>
+<p>任一非零的多项式矩阵$A(\lambda)&#x3D;(a_{ij}(\lambda))<em>{m\times n}$<br>$$<br>A(\lambda)\cong J(\lambda)&#x3D;<br>\begin{pmatrix}<br>d_1(\lambda)&amp;0&amp;…&amp;0&amp;0&amp;…&amp;0 \<br>0&amp;d_2(\lambda)&amp;…&amp;0&amp;0&amp;…&amp;0 \<br>\vdots&amp;\vdots&amp;&amp;\vdots&amp;\vdots&amp;&amp;\vdots \<br>0&amp;0&amp;…&amp;d_r(\lambda)&amp;0&amp;…&amp;0 \<br>0&amp;0&amp;…&amp;0&amp;0&amp;…&amp;0 \<br>\vdots&amp;\vdots&amp;&amp;\vdots&amp;\vdots&amp;&amp;\vdots \<br>0&amp;0&amp;…&amp;0&amp;0&amp;…&amp;0 \<br>\end{pmatrix}<br>$$<br>其中r（$\ge1$）是$A(\lambda)$的秩，$d_i(\lambda)(i&#x3D;1,2,…,r)$是首项系数为1的多项式，且$d_i(\lambda)|d</em>{i+1}(\lambda),i&#x3D;1,2,…,r-1$.</p>
+<p>$J(\lambda)$称为$A(\lambda)$的史密斯标准形。</p>
+<p><strong>矩阵史密斯标准化：</strong></p>
+<p>对于任一非零A矩阵，化简矩阵$(\lambda E-A)$ 为<br>$$<br>\begin{pmatrix}<br>d_1(\lambda)&amp;&amp; \<br>&amp;d_2(\lambda)&amp; \<br>&amp;&amp;\ddots&amp; \<br>&amp;&amp;&amp;d_n(\lambda) \<br>\end{pmatrix}<br>$$<br>$d_1(\lambda),d_2(\lambda),…,d_n(\lambda)$为A矩阵的不变因子。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/" data-id="clb8vgfkh0001t8tc9hgm499x" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/04/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2022-12-04T03:22:35.509Z" itemprop="datePublished">2022-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/04/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/12/04/hello-world/" data-id="clb8vgfk70000t8tc5nnga4nb" data-title="Hello World" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/12/04/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
