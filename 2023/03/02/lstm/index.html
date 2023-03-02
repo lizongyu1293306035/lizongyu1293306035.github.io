@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>LSTM模型概要 | Mr'Li</title><meta name="author" content="李宗雨"><meta name="copyright" content="李宗雨"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="LSTM 模型https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;123857569 一、定义LSTM模型（Long Short Term Memory）是一种特殊的循环神经网络，LSTM可以利用时间序列对输入进行分析。LSTM模型是对循环神经网络的长期依赖问题的一种改良，同时也解决了梯度消失和梯度爆炸的问题。LSTM模型不同之处：其在RNN的基础上加入内部状态，内部状态相当于传送带，贯穿整">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LSTM模型概要">
+<meta property="og:url" content="https://lizongyu1293306035.github.io/2023/03/02/lstm/index.html">
+<meta property="og:site_name" content="Mr&#39;Li">
+<meta property="og:description" content="LSTM 模型https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;123857569 一、定义LSTM模型（Long Short Term Memory）是一种特殊的循环神经网络，LSTM可以利用时间序列对输入进行分析。LSTM模型是对循环神经网络的长期依赖问题的一种改良，同时也解决了梯度消失和梯度爆炸的问题。LSTM模型不同之处：其在RNN的基础上加入内部状态，内部状态相当于传送带，贯穿整">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lizongyu1293306035.github.io/img/cover/4.jpg">
+<meta property="article:published_time" content="2023-03-02T02:53:00.000Z">
+<meta property="article:modified_time" content="2023-03-02T02:53:00.000Z">
+<meta property="article:author" content="李宗雨">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lizongyu1293306035.github.io/img/cover/4.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lizongyu1293306035.github.io/2023/03/02/lstm/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LSTM模型概要',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-02 10:53:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover/4.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mr'Li</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">LSTM模型概要</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-02T02:53:00.000Z" title="发表于 2023-03-02 10:53:00">2023-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-02T02:53:00.000Z" title="更新于 2023-03-02 10:53:00">2023-03-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="LSTM模型概要"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="LSTM-模型"><a href="#LSTM-模型" class="headerlink" title="LSTM 模型"></a>LSTM 模型</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/123857569">https://zhuanlan.zhihu.com/p/123857569</a></p>
+<h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>LSTM模型（Long Short Term Memory）是一种特殊的循环神经网络，LSTM可以利用时间序列对输入进行分析。LSTM模型是对循环神经网络的长期依赖问题的一种改良，同时也解决了梯度消失和梯度爆炸的问题。LSTM模型不同之处：其在RNN的基础上加入内部状态，内部状态相当于传送带，贯穿整个神经网络，影响各层的输入与输出。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/lstm/lstm1.png" alt="lstm1"></p>
+<h2 id="二-、经典RNN（循环神经网络）出现的一系列问题"><a href="#二-、经典RNN（循环神经网络）出现的一系列问题" class="headerlink" title="二 、经典RNN（循环神经网络）出现的一系列问题"></a>二 、经典RNN（循环神经网络）出现的一系列问题</h2><p>1、<strong>梯度爆炸：</strong> 神经网络的权重/偏置极大，导致神经网络参数调整幅度过大。</p>
+<p>​    <strong>梯度消失：</strong> 神经网络的权重/偏置极小，导致神经网络参数调整幅度过小。</p>
+<p>​    对于任何信息迭代，经过足够次的同样计算都会导致极大或极小的结果。</p>
+<p>2、<strong>长期依赖问题:</strong> 对于短时间序列，RNN十分方便；但对于长时间序列，当神经网络的节点经过许多阶段的计算后，之前比较长的时间片的特征已经被覆盖。循环神经网络只能处理我们需要较接近的上下文的情况，而LSTM模型能够处理距离较远的上下文的情况。</p>
+<p>3、<strong>无法进行并行计算</strong>：当前状态的输出取决于上一步的计算，导致计算是串行的。</p>
+<h2 id="三、单元状态"><a href="#三、单元状态" class="headerlink" title="三、单元状态"></a>三、单元状态</h2><h3 id="1、隐藏态"><a href="#1、隐藏态" class="headerlink" title="1、隐藏态"></a>1、隐藏态</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/lstm/lstm2.jpg" alt="lstm2"></p>
+<p>上图中从单元中贯穿而过的线为神经元的隐藏态我们可以将神经元的隐藏态。简单的理解成递归神经网络对于输入数据的“记忆”，用 <script type="math/tex">C_t</script>表示神经元在 t 时刻过后的“记忆”，这个向量涵盖了在 t+1 时刻前神经网络对于所有输入信息的“概括总结”。</p>
+<h3 id="2、遗忘门"><a href="#2、遗忘门" class="headerlink" title="2、遗忘门"></a>2、遗忘门</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/lstm/lstm3.jpg" alt="lstm3"></p>
+<p>对于上一时刻LSTM中的单元状态来说，一些“信息”可能会随着时间的流逝而“过时”。为了不让过多记忆影响神经网络对现在输入的处理，我们应该选择性遗忘一些在之前单元状态中的分量——这个工作就交给了“遗忘门”</p>
+<p>每一次输入一个新的输入，LSTM会先根据新的输入和上一时刻的输出决定遗忘掉之前的哪些记忆——输入和上一步的输出会整合为一个单独的向量，然后通过sigmoid神经层，最后点对点的乘在单元状态上。因为sigmoid 函数会将任意输入压缩到 (0,1) 的区间上，我们可以非常直觉的得出这个门的工作原理 —— 如果整合后的向量某个分量在通过sigmoid层后变为0，那么显然单元状态在对位相乘后对应的分量也会变成0，换句话说，“遗忘”了这个分量上的信息；如果某个分量通过sigmoid层后为1，单元状态会“保持完整记忆”。不同的sigmoid输出会带来不同信息的记忆与遗忘。通过这种方式，LSTM可以<strong>长期记忆重要信息</strong>，并且<strong>记忆可以随着输入进行动态调整</strong></p>
+<p>下面的公式可以用来描述遗忘门的计算，其中 <script type="math/tex">f_t</script> 就是sigmoid神经层的输出向量</p>
+<script type="math/tex; mode=display">
+f_t = \sigma(W_f*[h_{t-1},x_t]+b_f)</script><h3 id="3、记忆门"><a href="#3、记忆门" class="headerlink" title="3、记忆门"></a>3、记忆门</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/markdownimg/lstm/lstm4.jpg" alt="lstm4"></p>
+<p>记忆门是用来控制是否将在 t 时刻（现在）的数据并入单元状态中的控制单位。首先，用tanh函数层将现在的向量中的有效信息提取出来，然后使用（图上tanh函数层左侧）的sigmoid函数来控制这些记忆要放“多少”进入单元状态。这两者结合起来就可以做到：</p>
+<ol>
+<li>从当前输入中提取有效信息。<script type="math/tex">\hat{C_t}=tanh(W_c*[h_{t-1},x_t]+b_c)</script></li>
+<li>对提取的有效信息做出筛选，为每个分量做出评级(0 ~ 1)，评级越高的最后会有越多的记忆进入单元状态。<script type="math/tex">i_t =\sigma(W_i*[h_{t-1},x_t]+b_i)</script></li>
+</ol>
+<h3 id="4、输出门"><a href="#4、输出门" class="headerlink" title="4、输出门"></a>4、输出门</h3><p>输出门，顾名思义，就是LSTM单元用于计算当前时刻的输出值的神经层。输出层会先将当前输入值与上一时刻输出值整合后的向量（也就是公式中的 <script type="math/tex">[h_{t-1},x_t]</script>）用sigmoid函数提取其中的信息，接着，会将当前的单元状态通过tanh函数压缩映射到区间(-1, 1)中</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/NLP/">NLP</a></div><div class="post_share"><div class="social-share" data-image="/img/cover/4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/12/04/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数理统计</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/12/04/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" title="数理统计"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-04</div><div class="title">数理统计</div></div></a></div><div><a href="/2022/12/04/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-04</div><div class="title">数值分析</div></div></a></div><div><a href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/" title="矩阵理论"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-04</div><div class="title">矩阵理论</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">李宗雨</div><div class="author-info__description">A Static Website for Learning</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lizongyu1293306035" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1293306035@qq.com" target="_blank" title="Email:1293306035@qq.com"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LSTM-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">LSTM 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">一、定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E3%80%81%E7%BB%8F%E5%85%B8RNN%EF%BC%88%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%89%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%80%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">二 、经典RNN（循环神经网络）出现的一系列问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8D%95%E5%85%83%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.</span> <span class="toc-text">三、单元状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E9%9A%90%E8%97%8F%E6%80%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、隐藏态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E9%81%97%E5%BF%98%E9%97%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、遗忘门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E8%AE%B0%E5%BF%86%E9%97%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">3、记忆门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E8%BE%93%E5%87%BA%E9%97%A8"><span class="toc-number">1.3.4.</span> <span class="toc-text">4、输出门</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/02/lstm/" title="LSTM模型概要"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LSTM模型概要"/></a><div class="content"><a class="title" href="/2023/03/02/lstm/" title="LSTM模型概要">LSTM模型概要</a><time datetime="2023-03-02T02:53:00.000Z" title="发表于 2023-03-02 10:53:00">2023-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/04/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" title="数理统计"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数理统计"/></a><div class="content"><a class="title" href="/2022/12/04/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" title="数理统计">数理统计</a><time datetime="2022-12-04T12:00:00.000Z" title="发表于 2022-12-04 20:00:00">2022-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/04/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数值分析"/></a><div class="content"><a class="title" href="/2022/12/04/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析">数值分析</a><time datetime="2022-12-04T12:00:00.000Z" title="发表于 2022-12-04 20:00:00">2022-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/" title="矩阵理论"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="矩阵理论"/></a><div class="content"><a class="title" href="/2022/12/04/%E7%9F%A9%E9%98%B5%E7%90%86%E8%AE%BA/" title="矩阵理论">矩阵理论</a><time datetime="2022-12-04T11:22:00.000Z" title="发表于 2022-12-04 19:22:00">2022-12-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/footerimg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 李宗雨</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
